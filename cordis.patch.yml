@@ -1,0 +1,12 @@
+# dsh-workspace-pin — bundle patch
+#
+# 插入一个宿主条目。浏览器半边由 package.json 的 `dsh.client` 声明自动挂载，
+# 由 /plugins/dsh-workspace-pin/client.js 提供，不需要在 patch 里单独声明入口。
+#
+# 插件没有可配项：置顶集合存在浏览器 localStorage（键 dsh.workspace-pin.v1），
+# 工作区顺序写宿主的工作区 registry。停用插件本身就是总开关。
+
+- insert:
+    - id: workspace-pin
+      name: 'dsh-workspace-pin'
+      config: {}

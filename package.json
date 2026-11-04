@@ -1,0 +1,57 @@
+{
+  "name": "dsh-workspace-pin",
+  "version": "0.2.0",
+  "private": true,
+  "description": "DSH 插件：给侧栏的工作区（文件夹）行加一个与会话置顶完全同款的图钉——hover 出现 16×16 官方同款按钮，置顶后无 hover 显示灰色实心 pin，悬浮提示用官方 Tooltip；点击把工作区钉到列表最前。不改 dsh 源码。",
+  "type": "module",
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-api-workspace-controller"
+      ]
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "dsh",
+    "sidebar",
+    "pin",
+    "workspace",
+    "web-ui"
+  ],
+  "author": "Richard",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Richard2091/dsh-workspace-pin.git"
+  },
+  "homepage": "https://github.com/Richard2091/dsh-workspace-pin#readme",
+  "bugs": {
+    "url": "https://github.com/Richard2091/dsh-workspace-pin/issues"
+  }
+}
