@@ -69,3 +69,4 @@ Write-Host ''
 Write-Host '== 完成 =='
 Write-Host "备份目录：$BackupDir"
 Write-Host '刷新浏览器页面即回到原生侧栏（已写入宿主的工作区顺序会保留，拖回去即可）。'
+Write-Host '置顶集合文件 <DSH_HOME>/storages/dsh-workspace-pin/state.json 不会被自动删除，需要时手动删。'

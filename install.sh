@@ -43,7 +43,7 @@ echo "== 复制插件包 =="
 mkdir -p "$PROFILE_DIR/plugins"
 rm -rf "$TARGET_DIR"
 mkdir -p "$TARGET_DIR"
-for item in package.json cordis.patch.yml README.md LICENSE lib install.sh uninstall.sh install.ps1 uninstall.ps1; do
+for item in package.json cordis.patch.yml README.md README.en.md LICENSE lib test install.sh uninstall.sh install.ps1 uninstall.ps1; do
 	if [ -e "$SRC_DIR/$item" ]; then
 		cp -a "$SRC_DIR/$item" "$TARGET_DIR/"
 	fi

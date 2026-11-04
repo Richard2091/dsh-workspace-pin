@@ -69,7 +69,7 @@ if (Test-Path -LiteralPath $TargetDir) {
   Remove-Item -LiteralPath $TargetDir -Recurse -Force
 }
 New-Item -ItemType Directory -Force -Path $TargetDir | Out-Null
-foreach ($item in @('package.json', 'cordis.patch.yml', 'README.md', 'LICENSE', 'lib')) {
+foreach ($item in @('package.json', 'cordis.patch.yml', 'README.md', 'README.en.md', 'LICENSE', 'lib', 'test')) {
   $source = Join-Path $SourceDir $item
   if (-not (Test-Path -LiteralPath $source)) { continue }
   Copy-Item -LiteralPath $source -Destination $TargetDir -Recurse -Force
@@ -118,5 +118,7 @@ Write-Host '== 完成 =='
 if (-not $NoBackup) { Write-Host "备份目录：$BackupDir" }
 Write-Host ''
 Write-Host '下一步：刷新浏览器里的 DSH Web GUI 页面（本插件纯浏览器半边，不需要重启 dsh web）。'
-Write-Host '验证：工作区行 hover 出现图钉；F12 控制台执行 window.__dshWorkspacePinVersion，期望 "0.2.0"。'
+Write-Host '验证：工作区行 hover 出现图钉；F12 控制台执行 window.__dshWorkspacePinVersion，期望 "0.3.0"，'
+Write-Host '      window.__dshWorkspacePinStorageMode 期望 "host"（置顶集合已由宿主持久化）。'
+Write-Host '置顶数据：<DSH_HOME>/storages/dsh-workspace-pin/state.json（删掉即重置置顶）。'
 Write-Host '回滚：pwsh -File .\uninstall.ps1'

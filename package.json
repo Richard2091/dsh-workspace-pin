@@ -1,8 +1,8 @@
 {
   "name": "dsh-workspace-pin",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
-  "description": "DSH 插件：给侧栏的工作区（文件夹）行加一个与会话置顶完全同款的图钉——hover 出现 16×16 官方同款按钮，置顶后无 hover 显示灰色实心 pin，悬浮提示用官方 Tooltip；点击把工作区钉到列表最前。不改 dsh 源码。",
+  "description": "DSH 插件：给侧栏的工作区（文件夹）行加一个与会话置顶完全同款的图钉——hover 出现 16×16 官方同款按钮，置顶后无 hover 显示灰色实心 pin，悬浮提示用官方 Tooltip；置顶集合由宿主持久化（跨浏览器、清缓存不丢）。不改 dsh 源码。",
   "type": "module",
   "engines": {
     "node": "^22.19.0 || >=24.0.0"
@@ -20,8 +20,10 @@
   },
   "files": [
     "lib",
+    "test",
     "cordis.patch.yml",
     "README.md",
+    "README.en.md",
     "LICENSE"
   ],
   "dsh": {
