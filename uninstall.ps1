@@ -44,8 +44,9 @@ if (Test-Path -LiteralPath $PatchFile) {
 Write-Host '== 删除 patch 安装块 =='
 $begin = '# >>> dsh-workspace-pin >>>'
 $end = '# <<< dsh-workspace-pin <<<'
-if ((Test-Path -LiteralPath $PatchFile) -and ((Get-Content -LiteralPath $PatchFile -Raw) -match [regex]::Escape($begin))) {
-  $text = Get-Content -LiteralPath $PatchFile -Raw
+if ((Test-Path -LiteralPath $PatchFile) -and (([IO.File]::ReadAllText($PatchFile, [Text.UTF8Encoding]::new($false)).TrimStart([char]0xFEFF)) -match [regex]::Escape($begin))) {
+  # 显式按 UTF-8 读写：Windows PowerShell 5.1 的 Get-Content 默认按 ANSI 解码，会损坏中文注释。
+  $text = [IO.File]::ReadAllText($PatchFile, [Text.UTF8Encoding]::new($false)).TrimStart([char]0xFEFF)
   $pattern = '(?ms)^' + [regex]::Escape($begin) + '.*?^' + [regex]::Escape($end) + '\r?\n?'
   $text = [regex]::Replace($text, $pattern, '')
   [IO.File]::WriteAllText($PatchFile, $text.TrimEnd() + "`r`n", [Text.UTF8Encoding]::new($false))

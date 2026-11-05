@@ -102,7 +102,11 @@ $block = @(
   "$end"
 ) -join "`r`n"
 
-$text = if (Test-Path -LiteralPath $PatchFile) { Get-Content -LiteralPath $PatchFile -Raw } else { '' }
+# 显式按 UTF-8 读取：Windows PowerShell 5.1 的 Get-Content 默认按 ANSI 解码，
+# 会把 profile patch 里已有的中文注释读成乱码，回写后损坏原文件。
+$text = if (Test-Path -LiteralPath $PatchFile) {
+  [IO.File]::ReadAllText($PatchFile, [Text.UTF8Encoding]::new($false)).TrimStart([char]0xFEFF)
+} else { '' }
 if ($text -match [regex]::Escape($begin)) {
   $pattern = '(?ms)^' + [regex]::Escape($begin) + '.*?^' + [regex]::Escape($end) + '\r?\n?'
   $text = [regex]::Replace($text, $pattern, '')
