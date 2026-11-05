@@ -18,6 +18,8 @@ function createFakeContext({ connection } = {}) {
 	const ctx = {
 		logger: { warn: (message) => warnings.push(message) },
 		effect: (fn) => fn(),
+		// 与 Cordis 的 ctx.get() 一致：未 inject 的服务通过 get 读取（返回 undefined）。
+		get: (name) => (name === "connection" ? connection : undefined),
 		webServer: {
 			register: (route) => {
 				routes.push(route);

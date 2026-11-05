@@ -64,6 +64,9 @@ cd dsh-workspace-pin
 pwsh -File .\install.ps1
 ```
 
+> 只有 Windows PowerShell 5.1 也可以：`powershell -ExecutionPolicy Bypass -File .\install.ps1`
+> （脚本按 UTF-8 BOM 保存，5.1 不会把中文注释按 ANSI 解析成乱码）。
+
 ### macOS / Linux
 
 ```sh

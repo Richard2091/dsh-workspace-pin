@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
   dsh-workspace-pin 卸载脚本：删掉 patch 里的安装块、node_modules junction 和插件目录。
 

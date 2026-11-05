@@ -16,7 +16,10 @@
 - **文档**：README 拆成中文 `README.md` 与英文 `README.en.md`；删除「置顶集合是浏览器
   本地」的已知限制，补充数据位置、重置方式、`stateFile` 配置与宿主/缓存降级说明。
 - 新增宿主半边单元测试 `test/host-state.test.mjs`（`node --test`，覆盖读写、增量语义、
-  并发串行化、准入拒绝、边界错误、损坏文件）。
+  并发串行化、准入拒绝、边界错误、损坏文件）。测试里的假 Context 补上 `ctx.get()`，
+  与 Cordis 的“未 inject 服务经 get 读取”语义一致。
+- `install.ps1` / `uninstall.ps1` 改用 **UTF-8 BOM** 保存：Windows PowerShell 5.1
+  在没有 BOM 时按 ANSI 解析 `.ps1`，会把中文注释读成乱码并报语法错误（`pwsh` 不受影响）。
 
 ## 0.2.0 — 2026-11-04
 

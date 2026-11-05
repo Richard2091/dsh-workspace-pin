@@ -65,6 +65,9 @@ cd dsh-workspace-pin
 pwsh -File .\install.ps1
 ```
 
+> Windows PowerShell 5.1 works too: `powershell -ExecutionPolicy Bypass -File .\install.ps1`
+> (the scripts are saved as UTF-8 with BOM, so 5.1 doesn't misread the Chinese comments as ANSI).
+
 ### macOS / Linux
 
 ```sh

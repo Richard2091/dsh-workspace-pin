@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
   dsh-workspace-pin 安装脚本（Windows / PowerShell，幂等，可重复执行）。
 
